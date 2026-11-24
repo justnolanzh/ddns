@@ -3,8 +3,8 @@
 .env
 
 # runtime state produced by ddns.py
-ddns.log
-ddns.log.[0-9]
+logs/
+*.log
 dnspod.err
 .dnspod.lock
 

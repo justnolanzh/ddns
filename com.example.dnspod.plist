@@ -19,9 +19,10 @@
 	<true/>
 	<key>ThrottleInterval</key>
 	<integer>30</integer>
+	<!-- launchd captures; the script writes logs/ddns.log itself (rotating) -->
 	<key>StandardOutPath</key>
-	<string>/opt/ddns/dnspod.err</string>
+	<string>/opt/ddns/logs/dnspod.err</string>
 	<key>StandardErrorPath</key>
-	<string>/opt/ddns/dnspod.err</string>
+	<string>/opt/ddns/logs/dnspod.err</string>
 </dict>
 </plist>

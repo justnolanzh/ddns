@@ -100,11 +100,13 @@ sudo launchctl bootout system/com.example.dnspod
 
 | 路径 | 内容 |
 |---|---|
-| `/opt/ddns/ddns.log` | 主日志，自轮转 `ddns.log` → `.1` → `.2` → `.3` |
-| `/opt/ddns/dnspod.err` | launchd 接管的 stdout/stderr，正常应为 0 字节；非空说明启动阶段就崩了 |
+| `/opt/ddns/logs/ddns.log` | 主日志，自轮转 `ddns.log` → `.1` → `.2` → `.3`（1 MB × 4，约四周） |
+| `/opt/ddns/logs/dnspod.err` | launchd 接管的 stdout/stderr，正常应为 0 字节；非空说明启动阶段就崩了 |
+
+日志目录默认是脚本同级的 `logs/`，可用环境变量 `DDNS_LOG_DIR` 或 plist 的 `EnvironmentVariables` 覆盖。
 
 ```sh
-tail -f /opt/ddns/ddns.log
+tail -f /opt/ddns/logs/ddns.log
 ```
 
 关键日志行：

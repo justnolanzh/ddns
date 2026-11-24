@@ -26,7 +26,8 @@ from logging.handlers import RotatingFileHandler
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 TOKEN_FILE = os.path.join(BASE_DIR, ".dnspod_token")
 CONFIG_FILE = os.path.join(BASE_DIR, "ddns.json")
-LOG_FILE = os.path.join(BASE_DIR, "ddns.log")
+LOG_DIR = os.environ.get("DDNS_LOG_DIR", os.path.join(BASE_DIR, "logs"))
+LOG_FILE = os.path.join(LOG_DIR, "ddns.log")
 LOCK_FILE = os.environ.get("DDNS_LOCK", os.path.join(BASE_DIR, ".dnspod.lock"))
 
 DEFAULT_TARGET = {
@@ -54,6 +55,7 @@ def setup_logging():
     fmt = logging.Formatter("%(asctime)s %(levelname)s %(message)s", "%Y-%m-%d %H:%M:%S")
     log.setLevel(logging.INFO)
     try:
+        os.makedirs(LOG_DIR, exist_ok=True)
         fh = RotatingFileHandler(LOG_FILE, maxBytes=1_000_000, backupCount=3, encoding="utf-8")
         fh.setFormatter(fmt)
         log.addHandler(fh)
