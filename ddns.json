@@ -1,0 +1,8 @@
+{
+  "domain": "draftai.cn",
+  "domain_id": 12345678,
+  "record_id": 1234567890,
+  "sub_domain": "ddns",
+  "record_line": "默认",
+  "ttl": "600"
+}
