@@ -30,9 +30,9 @@ LOG_FILE = os.path.join(BASE_DIR, "ddns.log")
 LOCK_FILE = os.environ.get("DDNS_LOCK", os.path.join(BASE_DIR, ".dnspod.lock"))
 
 DEFAULT_TARGET = {
-    "domain": "draftai.cn",
-    "domain_id": 94031997,
-    "record_id": 1344126487,
+    "domain": "example.com",
+    "domain_id": 12345678,
+    "record_id": 1234567890,
     "sub_domain": "ddns",
     "record_line": "默认",
     "ttl": "600",
@@ -112,7 +112,7 @@ def api(path, payload):
         conn.request("POST", path, body, {
             "Content-type": "application/x-www-form-urlencoded",
             "Accept": "text/json",
-            "User-Agent": "ddns-updater/2.0 (draftai.cn)",
+            "User-Agent": "ddns-updater/2.0",
         })
         resp = conn.getresponse()
         raw = resp.read().decode("utf-8", "replace")
@@ -135,7 +135,7 @@ def current_record(token, target):
 
 
 def _probe(url):
-    req = urllib.request.Request(url, headers={"User-Agent": "ddns-updater/2.0 (draftai.cn)"})
+    req = urllib.request.Request(url, headers={"User-Agent": "ddns-updater/2.0"})
     with urllib.request.urlopen(req, timeout=TIMEOUT) as resp:
         text = resp.read(256).decode("utf-8", "replace")
     candidate = text.split()[0].strip() if text.split() else ""

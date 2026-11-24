@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- Label must match this file's name (com.example.dnspod.plist) -->
+	<key>Label</key>
+	<string>com.example.dnspod</string>
+	<key>ProgramArguments</key>
+	<array>
+		<string>python3</string>
+		<string>/opt/ddns/dnspod.py</string>
+	</array>
+	<!-- run as an unprivileged user; root is not needed -->
+	<key>UserName</key>
+	<string>CHANGE_ME</string>
+	<key>RunAtLoad</key>
+	<true/>
+	<key>KeepAlive</key>
+	<true/>
+	<key>ThrottleInterval</key>
+	<integer>30</integer>
+	<key>StandardOutPath</key>
+	<string>/opt/ddns/dnspod.err</string>
+	<key>StandardErrorPath</key>
+	<string>/opt/ddns/dnspod.err</string>
+</dict>
+</plist>

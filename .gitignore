@@ -1,0 +1,21 @@
+# credentials — never commit
+.dnspod_token
+.env
+
+# runtime state produced by ddns.py
+ddns.log
+ddns.log.[0-9]
+dnspod.err
+.dnspod.lock
+
+# local edits / backups that may still contain a token
+*.orig
+*.orig-*
+*.bak
+
+# python
+__pycache__/
+*.pyc
+
+# macOS
+.DS_Store
